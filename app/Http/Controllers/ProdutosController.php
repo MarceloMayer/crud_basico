@@ -22,4 +22,27 @@ class ProdutosController extends Controller
 
         return 'Produto criado com sucesso!';
     }
+
+    function show($id){
+        $produto = Produto::findOrFail($id);
+        return view('produtos.show', ['produto'=>$produto]);
+    }
+
+    function edit($id){
+        $produto = Produto::findOrFail($id);
+        return view('produtos.edit', ['produto'=>$produto]);
+    }
+
+    function update(Request $request, $id){
+        $produto = Produto::findOrFail($id);
+
+        $produto->update([
+            'nome'=>$request->nome,
+            'custo'=>$request->custo,
+            'preco'=>$request->preco,
+            'quantidade'=>$request->quantidade
+        ]);
+        
+        return 'Produto atualizado com sucesso!';
+    }
 }

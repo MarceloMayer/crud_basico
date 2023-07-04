@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <form action="">
+    <form action="{{route('registrar_produto')}}" method="POST">
+        @csrf
         <label for="">Nome</label><br />
         <input type="text" name="nome"><br />
 
@@ -20,7 +21,7 @@
         <input type="text" name="preco"><br />
 
         <label for="">Quantidade</label><br />
-        <input type="text" name="quantidade"><br />
+        <input type="text" name="quantidade"><br /><br />
 
         <button>Salvar</button>
     </form>

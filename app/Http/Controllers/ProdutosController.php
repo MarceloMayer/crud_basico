@@ -42,7 +42,20 @@ class ProdutosController extends Controller
             'preco'=>$request->preco,
             'quantidade'=>$request->quantidade
         ]);
-        
+
         return 'Produto atualizado com sucesso!';
+    }
+
+    function delete($id){
+        $produto = Produto::findOrFail($id);
+        
+        return view('produtos.delete', ['produto'=>$produto]);
+    }
+
+    function destroy($id){
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+
+        return 'Produto excluído com sucesso!';
     }
 }
